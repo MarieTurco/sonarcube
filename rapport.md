@@ -39,13 +39,9 @@
 
 ## Étape 3 : Analyse SonarQube
 
-> Screenshots à insérer ici une fois SonarQube configuré et lancé
+![Capture d'écran du scan SonarQube](/sonarcube.png)
 
-- Lancement de SonarQube en local (`http://localhost:9000`)
-- Ajout du fichier `sonar-project.properties`
-- Lancement de l’analyse avec `sonar-scanner`
-- Résultat : X bugs, Y code smells, Z failles de sécurité
-- 
+
 ---
 
 ##  Bilan
