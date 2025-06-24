@@ -1,12 +1,28 @@
 const express = require('express');
-const router = express.Router();
+const { body } = require('express-validator');
 const { register, login } = require('../controllers/userController');
-const auth = require('../auth');
 
-router.post('/register', register);
-router.post('/login', login);
-router.get('/profile', auth, (req, res) => {
-    res.send(`Bienvenue, ${req.user.username}`);
-});
+const router = express.Router();
+
+// Validation des champs lors de l'inscription
+router.post(
+    '/register',
+    [
+        body('username').isLength({ min: 3 }),
+        body('email').isEmail(),
+        body('password').isLength({ min: 6 }),
+    ],
+    register
+);
+
+// Validation des champs lors de la connexion
+router.post(
+    '/login',
+    [
+        body('username').notEmpty(),
+        body('password').notEmpty(),
+    ],
+    login
+);
 
 module.exports = router;
